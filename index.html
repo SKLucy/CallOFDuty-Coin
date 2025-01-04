@@ -1,3 +1,6 @@
+Hier ist der aktualisierte HTML-Code mit den gewünschten Anpassungen:
+
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,154 +10,172 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            color: #fff;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-attachment: fixed;
             margin: 0;
             padding: 0;
+            background: url('background-image.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
         }
-        .container {
+        header {
             text-align: center;
-            padding: 50px;
+            padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
         }
-        h1 {
+        header h1 {
+            margin: 0;
             font-size: 3em;
-            margin-bottom: 20px;
         }
-        .button {
-            display: inline-block;
-            margin: 20px;
+        .disclaimer {
+            text-align: center;
+            margin: 10px;
+            font-size: 0.9em;
+            color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
+        }
+        .box {
+            background-color: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .button:hover {
-            transform: scale(1.1);
-        }
-        #why-buy {
-            background-image: url('why_buy_button.png');
-            background-size: cover;
+            margin: 15px;
+            padding: 20px;
             width: 300px;
-            height: 100px;
-            animation: pulse 2s infinite;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
-        #how-to-buy {
-            background-image: url('how_to_buy_button.png');
-            background-size: cover;
-            width: 300px;
-            height: 100px;
-            border: 2px solid gold;
+        .box h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .box a {
+            color: #00bfff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .box a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            border: 2px solid #ffcc00;
+        }
+        .pulsating {
+            animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .info-section {
-            display: none;
-            margin-top: 20px;
-            text-align: left;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .close-btn {
-            float: right;
-            cursor: pointer;
-            font-size: 1.5em;
+            0% {
+                box-shadow: 0 0 10px #ffcc00;
+            }
+            50% {
+                box-shadow: 0 0 20px #ffcc00;
+            }
+            100% {
+                box-shadow: 0 0 10px #ffcc00;
+            }
         }
         .video-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 200px;
-            background-color: rgba(0, 0, 0, 0.8);
+            position: relative;
+            width: 560px;
+            max-width: 100%;
+            margin: 20px auto;
             border-radius: 10px;
             overflow: hidden;
-            resize: both;
-            draggable: true;
-            padding: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
         }
         .video-container iframe {
             width: 100%;
-            height: 100%;
+            height: 315px;
             border: none;
         }
-        .disclaimer {
-            margin-top: 30px;
-            font-size: 0.8em;
-            color: #ccc;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
+        .resize-handle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: nwse-resize;
         }
-        .link {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        .link:hover {
-            text-decoration: underline;
+        .minimize-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            text-align: center;
+            line-height: 20px;
+            font-weight: bold;
+            color: black;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Warzone Verdansk Coin</h1>
-        <div style="display: flex; justify-content: center; gap: 30px;">
-            <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
-            <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
+    </header>
+    <p class="disclaimer">Der Handel mit Kryptowährungen garantiert keinen Erfolg. Investiere nur, was du dir leisten kannst zu verlieren.</p>
+
+    <div class="container">
+        <!-- Informationen über Verdansk -->
+        <div class="box">
+            <h2>Über Verdansk</h2>
+            <p>Erfahre mehr über die legendäre Verdansk-Karte aus Call of Duty. Ein beliebtes Schlachtfeld, das alle vermissen.</p>
+            <a href="#">Mehr erfahren</a>
         </div>
 
-        <div id="why-buy-info" class="info-section">
-            <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
-            <h2>Warum diesen Coin kaufen?</h2>
-            <p>Wir vermissen alle die legendäre Verdansk-Karte aus Call of Duty. Durch den Kauf dieses Coins können wir gemeinsam die Marktkapitalisierung steigern und zeigen, wie sehr wir Verdansk zurückhaben möchten.</p>
+        <!-- Warum kaufen? -->
+        <div class="box pulsating">
+            <h2>Warum kaufen?</h2>
+            <p>Lasst uns gemeinsam die Marktkapitalisierung steigern und der Welt zeigen, wie sehr wir Verdansk vermissen!</p>
+            <a href="#">Mach mit</a>
         </div>
 
-        <div id="how-to-buy-info" class="info-section">
-            <span class="close-btn" onclick="toggleSection('how-to-buy-info')">&times;</span>
-            <h2>Wie kauft man den Coin?</h2>
+        <!-- Wie kauft man -->
+        <div class="box highlight">
+            <h2>Wie kauft man</h2>
+            <p>Schritt-für-Schritt-Anleitung zum Kauf des Warzone Verdansk Coins:</p>
             <ol>
                 <li>
-                    Installiere ein Wallet wie <a href="https://phantom.app" target="_blank" class="link">Phantom</a> oder MetaMask.
+                    <strong>Wallet besorgen:</strong> Installiere <a href="https://phantom.app" target="_blank">Phantom Wallet</a> oder <a href="https://metamask.io" target="_blank">MetaMask</a>.
                 </li>
                 <li>
-                    Kaufe Solana (SOL) und füge es deinem Wallet hinzu.
+                    <strong>Solana kaufen:</strong> Nutze eine große Börse wie Binance oder Coinbase, um Solana zu erwerben.
                 </li>
                 <li>
-                    Besuche <a href="https://dexscreener.com" target="_blank" class="link">Dexscreener</a> und suche nach "Warzone Verdansk Coin" im Suchfeld.
-                </li>
-                <li>
-                    Klicke auf den entsprechenden Coin und folge den Anweisungen zur Transaktion, um ihn mit deinem Wallet zu verbinden und zu kaufen.
+                    <strong>Coin finden:</strong> Gehe zu <a href="https://dexscreener.com" target="_blank">Dexscreener</a>, suche nach 'Warzone Verdansk Coin' und folge den Anweisungen auf dem Bildschirm, um deinen Kauf abzuschließen.
                 </li>
             </ol>
         </div>
-
-        <div class="disclaimer">
-            <p>Der Handel mit Kryptowährungen bietet keine Erfolgsgarantie. Investiere nur, was du bereit bist zu verlieren.</p>
-        </div>
     </div>
 
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/YsWeym0MdeE" allowfullscreen></iframe>
+    <!-- YouTube-Video -->
+    <div class="video-container" id="videoContainer">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="resize-handle" id="resizeHandle"></div>
+        <div class="minimize-button" id="minimizeButton">–</div>
     </div>
 
     <script>
-        function toggleSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            if (section.style.display === 'none' || section.style.display === '') {
-                section.style.display = 'block';
-            } else {
-                section.style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
+        // Skalierfunktion für das Video
+        const videoContainer = document.getElementById('videoContainer');
+        const resizeHandle = document.getElementById('resizeHandle');
+        const minimizeButton = document.getElementById('minimizeButton');
+        let isResizing = false;
 
+        resizeHandle.addEventListener('mousedown', function(e) {
+            isResizing = true;
+            document.addEventListener('mousemove', resizeVideo);
+            document.addEventListener('mouseup', stopResizing);
+        });
+
+        function resizeVideo(e) {
+            if (isResizing) {
+                const width = e.clientX - videoContainer.offsetLeft;
+                const height = (width * 315) / 560; // Beibehaltung des Seitenverhältnisses 16:9
+                if (width > 200 && height > 112) { // Mindestgröße festlegen
+                    videoContainer.style.width = width + 'px';
+                    videoContainer.style.height = height + 'px 
