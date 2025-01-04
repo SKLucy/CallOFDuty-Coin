@@ -35,7 +35,7 @@
             transform: scale(1.1);
             filter: brightness(1.2);
         }
-        #why-buy, #how-to-buy, #about-verdansk, #release-info {
+        #why-buy, #how-to-buy, #release-info {
             background-size: cover;
             background-position: center; /* Center the background images */
             width: 600px;
@@ -47,14 +47,6 @@
         }
         #how-to-buy {
             background-image: url('how_to_buy_button.png');
-        }
-        #about-verdansk {
-            background-color: rgba(0, 0, 0, 0.5); /* Placeholder background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5em;
         }
         #release-info {
             background-color: rgba(0, 0, 0, 0.5); /* Placeholder background */
@@ -102,8 +94,9 @@
 
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')">Info About Verdansk</div>
-        <div id="release-info" class="button">Release Details Pending</div>
+        <div id="release-info" class="button">Coin Link Here Available In
+            <div id="release-timer" class="timer"></div>
+        </div>
 
         <div id="why-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
@@ -122,20 +115,6 @@
                 <li>Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> and search for "Warzone Verdansk Coin" in the search field.</li>
                 <li>Follow the platform's instructions to purchase the coin.</li>
             </ol>
-        </div>
-
-        <div id="about-verdansk-info" class="info-section">
-            <span class="close-btn" onclick="toggleSection('about-verdansk-info')">&times;</span>
-            <h2>About Verdansk</h2>
-            <p>Verdansk was an iconic map in Call of Duty: Warzone. Players remember their epic battles and adventures in this environment. With this coin, we keep the memory of Verdansk alive!</p>
-        </div>
-
-        <div id="release-info-info" class="info-section">
-            <span class="close-btn" onclick="toggleSection('release-info-info')">&times;</span>
-            <h2>Release Information</h2>
-            <p>The countdown timer below shows when the coin will be available for purchase. After the timer ends, the link to the coin on Dexscreener will appear here:</p>
-            <div id="release-timer" class="timer"></div>
-            <p id="release-link" style="display: none; color: lightgreen;">The coin is now live! Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> to buy the coin!</p>
         </div>
 
         <div class="disclaimer">
