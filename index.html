@@ -37,6 +37,7 @@
         }
         #why-buy, #how-to-buy, #about-verdansk, #release-info {
             background-size: cover;
+            background-position: center; /* Center the background images */
             width: 600px;
             height: 225px;
             border: 2px solid gold;
@@ -48,10 +49,20 @@
             background-image: url('how_to_buy_button.png');
         }
         #about-verdansk {
-            background-image: url('about_verdansk_button.png');
+            background-color: rgba(0, 0, 0, 0.5); /* Placeholder background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
         }
         #release-info {
-            background-image: url('release_info_button.png');
+            background-color: rgba(0, 0, 0, 0.5); /* Placeholder background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -121,8 +132,8 @@
 
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')"></div>
-        <div id="release-info" class="button" onclick="toggleSection('release-info-info')"></div>
+        <div id="about-verdansk" class="button">More Info Coming Soon</div>
+        <div id="release-info" class="button">Release Details Pending</div>
 
         <div id="why-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
