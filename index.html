@@ -6,135 +6,192 @@
     <title>Warzone Verdansk Coin ($VERD)</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background: url('background.jpg') no-repeat center center fixed;
+            color: #fff;
+            background-image: url('background.jpg');
             background-size: cover;
-            color: white;
-            text-align: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
         }
-
-        .header {
-            font-size: 2.5em;
-            margin: 20px 0;
-        }
-
-        .timer {
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .window {
-            width: 45%;
-            height: 200px;
-            border: 3px solid yellow;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
             text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            position: relative;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
             cursor: pointer;
-            overflow: hidden;
+            transition: transform 0.3s, brightness 0.3s;
         }
-
-        .window img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .button:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
         }
-
-        .window span {
-            position: absolute;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.7);
+        #why-buy, #how-to-buy, #about-verdansk, #release-info {
+            background-size: cover;
+            background-position: center; /* Center the background images */
+            width: 600px;
+            height: 225px;
+            border: 2px solid gold;
+        }
+        #why-buy {
+            background-image: url('why_buy_button.png');
+        }
+        #how-to-buy {
+            background-image: url('how_to_buy_button.png');
+        }
+        #about-verdansk {
+            background-color: rgba(0, 0, 0, 0.5); /* Placeholder background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
+            font-size: 1.5em;
         }
-
-        .pulsating {
-            animation: pulse 1.5s infinite;
+        #release-info {
+            background-color: rgba(0, 0, 0, 0.5); /* Placeholder background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
         }
-
-        @keyframes pulse {
-            0%, 100% {
-                background-color: rgba(255, 255, 0, 0.5);
-            }
-            50% {
-                background-color: rgba(255, 255, 0, 0.8);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .window {
-                width: 90%;
-                height: 150px;
-                font-size: 1em;
-            }
+        .info-section {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #ccc;
+        }
+        .timer {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: gold;
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Warzone Verdansk Coin ($VERD)</h1>
+
+        <div id="main-timer" class="timer"></div>
+
+        <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
+        <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
+        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')">Info About Verdansk</div>
+        <div id="release-info" class="button">Release Details Pending</div>
+
+        <div id="why-buy-info" class="info-section">
+            <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
+            <h2>Why Buy This Coin?</h2>
+            <p>We all miss the legendary Verdansk map from Call of Duty. By purchasing this coin, we can collectively increase its market cap and show how much we want Verdansk back!</p>
+        </div>
+
+        <div id="how-to-buy-info" class="info-section">
+            <span class="close-btn" onclick="toggleSection('how-to-buy-info')">&times;</span>
+            <h2>How to Buy the Coin?</h2>
+            <p>The countdown below shows when the coin will be live and ready for purchase:</p>
+            <div id="how-to-buy-timer" class="timer"></div>
+            <ol>
+                <li>Install a wallet like <a href="https://phantom.app/" target="_blank">Phantom</a> or MetaMask.</li>
+                <li>Watch <a href="https://www.youtube.com/watch?v=d1z5qYSF1tM" target="_blank">this tutorial</a> to learn how to buy Solana (SOL) in Phantom.</li>
+                <li>Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> and search for "Warzone Verdansk Coin" in the search field.</li>
+                <li>Follow the platform's instructions to purchase the coin.</li>
+            </ol>
+        </div>
+
+        <div id="about-verdansk-info" class="info-section">
+            <span class="close-btn" onclick="toggleSection('about-verdansk-info')">&times;</span>
+            <h2>About Verdansk</h2>
+            <p>Verdansk was an iconic map in Call of Duty: Warzone. Players remember their epic battles and adventures in this environment. With this coin, we keep the memory of Verdansk alive!</p>
+        </div>
+
+        <div id="release-info-info" class="info-section">
+            <span class="close-btn" onclick="toggleSection('release-info-info')">&times;</span>
+            <h2>Release Information</h2>
+            <p>The countdown timer below shows when the coin will be available for purchase. After the timer ends, the link to the coin on Dexscreener will appear here:</p>
+            <div id="release-timer" class="timer"></div>
+            <p id="release-link" style="display: none; color: lightgreen;">The coin is now live! Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> to buy the coin!</p>
+        </div>
+
+        <div class="disclaimer">
+            <p>Trading cryptocurrencies comes with no guarantee of success. Invest only what you are willing to lose.</p>
+        </div>
+    </div>
+
     <script>
-        function updateTimer() {
-            const releaseDate = new Date("2025-01-05T13:00:00"); // Set release date and time
-            const now = new Date();
-            const diff = releaseDate - now;
-
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById("timer").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-                document.getElementById("window-timer").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        function toggleSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'block';
             } else {
-                document.getElementById("timer").textContent = "Coin Link Available Now!";
-                document.getElementById("window-timer").textContent = "Coin Link Available Now!";
-                clearInterval(timerInterval);
+                section.style.display = 'none';
             }
         }
 
-        const timerInterval = setInterval(updateTimer, 1000);
-        window.onload = updateTimer;
+        function calculateTimeUntilRelease(releaseDate) {
+            const now = new Date();
+            const timeDiff = releaseDate - now;
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            return { hours, minutes, seconds, timeDiff };
+        }
+
+        function startCountdown() {
+            const releaseDate = new Date('2025-01-05T13:00:00'); // 1PM CET
+
+            function updateTimer(timerId, linkId) {
+                const { hours, minutes, seconds, timeDiff } = calculateTimeUntilRelease(releaseDate);
+                const timerDisplay = document.getElementById(timerId);
+                const linkDisplay = document.getElementById(linkId);
+
+                if (timeDiff <= 0) {
+                    timerDisplay.textContent = "The coin is now live!";
+                    if (linkDisplay) linkDisplay.style.display = 'block';
+                    return;
+                }
+
+                timerDisplay.textContent = `Time until release: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            updateTimer('main-timer', null);
+            updateTimer('how-to-buy-timer', null);
+            updateTimer('release-timer', 'release-link');
+
+            setInterval(() => {
+                updateTimer('main-timer', null);
+                updateTimer('how-to-buy-timer', null);
+                updateTimer('release-timer', 'release-link');
+            }, 1000);
+        }
+
+        window.onload = startCountdown;
     </script>
-</head>
-<body>
-    <div class="header">Warzone Verdansk Coin ($VERD)</div>
-    <div class="timer">Time until release: <span id="timer"></span></div>
-    <div class="container">
-        <!-- Fenster 1 -->
-        <a href="why-buy.html" class="window">
-            <img src="why-buy-image.jpg" alt="Why Buy This Coin">
-            <span>Why Buy This Coin?</span>
-        </a>
-
-        <!-- Fenster 2 -->
-        <a href="how-to-buy.html" class="window">
-            <img src="how-to-buy-image.jpg" alt="How To Buy">
-            <span>How To Buy</span>
-        </a>
-
-        <!-- Fenster 3 (mit Countdown und pulsierendem Effekt) -->
-        <a href="coin-link.html" class="window pulsating">
-            <span>
-                Coin Link Here Available In:
-                <br>
-                <span id="window-timer"></span>
-            </span>
-        </a>
-    </div>
 </body>
 </html>
