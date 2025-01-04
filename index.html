@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,6 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s, brightness 0.3s;
-            background-position: center;
         }
         .button:hover {
             transform: scale(1.1);
@@ -50,12 +49,6 @@
         }
         #about-verdansk {
             background-image: url('about_verdansk_button.png');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: gold;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -110,40 +103,48 @@
             font-size: 0.8em;
             color: #ccc;
         }
+        .timer {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: gold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Warzone Verdansk Coin ($VERD)</h1>
+
+        <div id="timer" class="timer"></div>
+
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')">Über Verdansk</div>
+        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')"></div>
 
         <div id="why-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
-            <h2>Warum diesen Coin kaufen?</h2>
-            <p>Wir vermissen alle die legendäre Verdansk-Karte aus Call of Duty. Durch den Kauf dieses Coins können wir gemeinsam die Marktkapitalisierung steigern und zeigen, wie sehr wir Verdansk zurückhaben möchten.</p>
+            <h2>Why Buy This Coin?</h2>
+            <p>We all miss the legendary Verdansk map from Call of Duty. By purchasing this coin, we can collectively increase its market cap and show how much we want Verdansk back!</p>
         </div>
 
         <div id="how-to-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('how-to-buy-info')">&times;</span>
-            <h2>Wie kauft man den Coin?</h2>
+            <h2>How to Buy the Coin?</h2>
             <ol>
-                <li>Installiere ein Wallet wie <a href="https://phantom.app/" target="_blank">Phantom</a> oder MetaMask.</li>
-                <li>Sieh dir <a href="https://www.youtube.com/watch?v=d1z5qYSF1tM" target="_blank">dieses Tutorial</a> an, um zu erfahren, wie man Solana (SOL) in Phantom kauft.</li>
-                <li>Besuche <a href="https://dexscreener.com" target="_blank">Dexscreener</a> und suche nach "Warzone Verdansk Coin" im Suchfeld.</li>
-                <li>Folge den Anweisungen auf der Plattform, um den Coin zu erwerben.</li>
+                <li>Install a wallet like <a href="https://phantom.app/" target="_blank">Phantom</a> or MetaMask.</li>
+                <li>Watch <a href="https://www.youtube.com/watch?v=d1z5qYSF1tM" target="_blank">this tutorial</a> to learn how to buy Solana (SOL) in Phantom.</li>
+                <li>Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> and search for "Warzone Verdansk Coin" in the search field.</li>
+                <li>Follow the platform's instructions to purchase the coin.</li>
             </ol>
         </div>
 
         <div id="about-verdansk-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('about-verdansk-info')">&times;</span>
-            <h2>Über Verdansk</h2>
-            <p>Verdansk war eine ikonische Karte in Call of Duty: Warzone. Spieler erinnern sich an ihre epischen Kämpfe und Abenteuer in dieser Umgebung. Mit diesem Coin halten wir die Erinnerung an Verdansk am Leben!</p>
+            <h2>About Verdansk</h2>
+            <p>Verdansk was an iconic map in Call of Duty: Warzone. Players remember their epic battles and adventures in this environment. With this coin, we keep the memory of Verdansk alive!</p>
         </div>
 
         <div class="disclaimer">
-            <p>Der Handel mit Kryptowährungen bietet keine Erfolgsgarantie. Investiere nur, was du bereit bist zu verlieren.</p>
+            <p>Trading cryptocurrencies comes with no guarantee of success. Invest only what you are willing to lose.</p>
         </div>
     </div>
 
@@ -166,6 +167,29 @@
             var videoContainer = document.getElementById('video-container');
             videoContainer.style.display = 'none';
         }
+
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = "Time until release: " + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    display.textContent = "The coin is now live!";
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var twoHours = 60 * 60 * 2;
+            var display = document.getElementById('timer');
+            startTimer(twoHours, display);
+        };
     </script>
 </body>
 </html>
