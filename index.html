@@ -30,6 +30,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s, brightness 0.3s;
+            background-position: center;
         }
         .button:hover {
             transform: scale(1.1);
@@ -49,6 +50,12 @@
         }
         #about-verdansk {
             background-image: url('about_verdansk_button.png');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: gold;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -110,7 +117,7 @@
         <h1>Warzone Verdansk Coin ($VERD)</h1>
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')"></div>
+        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')">Über Verdansk</div>
 
         <div id="why-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
