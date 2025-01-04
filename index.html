@@ -168,28 +168,44 @@
             videoContainer.style.display = 'none';
         }
 
-        function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
+        function calculateTimeUntilRelease() {
+            const releaseHour = 18; // 18:00 Austrian time (CET)
+            const now = new Date();
+            const releaseTime = new Date();
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+            releaseTime.setHours(releaseHour, 0, 0, 0);
 
-                display.textContent = "Time until release: " + minutes + ":" + seconds;
+            if (now > releaseTime) {
+                releaseTime.setDate(releaseTime.getDate() + 1);
+            }
 
-                if (--timer < 0) {
-                    display.textContent = "The coin is now live!";
-                }
-            }, 1000);
+            const timeDiff = releaseTime - now;
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            return { hours, minutes, seconds };
         }
 
-        window.onload = function () {
-            var twoHours = 60 * 60 * 2;
-            var display = document.getElementById('timer');
-            startTimer(twoHours, display);
-        };
+        function startCountdown() {
+            const timerDisplay = document.getElementById('timer');
+
+            function updateTimer() {
+                const { hours, minutes, seconds } = calculateTimeUntilRelease();
+
+                if (hours <= 0 && minutes <= 0 && seconds <= 0) {
+                    timerDisplay.textContent = "The coin is now live on Dexscreener!";
+                    return;
+                }
+
+                timerDisplay.textContent = `Time until release: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        window.onload = startCountdown;
     </script>
 </body>
 </html>
