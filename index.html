@@ -38,8 +38,9 @@
         #why-buy, #how-to-buy, #about-verdansk {
             background-size: cover;
             width: 600px;
-            height: 225px;
+            height: 300px;
             border: 2px solid gold;
+            background-position: center;
         }
         #why-buy {
             background-image: url('why_buy_button.png');
@@ -48,7 +49,12 @@
             background-image: url('how_to_buy_button.png');
         }
         #about-verdansk {
-            background-image: url('about_verdansk_button.png');
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -118,7 +124,9 @@
 
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')"></div>
+        <div id="about-verdansk" class="button">
+            <span>About Verdansk</span>
+        </div>
 
         <div id="why-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
@@ -135,12 +143,6 @@
                 <li>Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> and search for "Warzone Verdansk Coin" in the search field.</li>
                 <li>Follow the platform's instructions to purchase the coin.</li>
             </ol>
-        </div>
-
-        <div id="about-verdansk-info" class="info-section">
-            <span class="close-btn" onclick="toggleSection('about-verdansk-info')">&times;</span>
-            <h2>About Verdansk</h2>
-            <p>Verdansk was an iconic map in Call of Duty: Warzone. Players remember their epic battles and adventures in this environment. With this coin, we keep the memory of Verdansk alive!</p>
         </div>
 
         <div class="disclaimer">
