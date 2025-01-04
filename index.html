@@ -35,12 +35,11 @@
             transform: scale(1.1);
             filter: brightness(1.2);
         }
-        #why-buy, #how-to-buy, #about-verdansk {
+        #why-buy, #how-to-buy, #about-verdansk, #release-info {
             background-size: cover;
             width: 600px;
-            height: 300px;
+            height: 225px;
             border: 2px solid gold;
-            background-position: center;
         }
         #why-buy {
             background-image: url('why_buy_button.png');
@@ -49,12 +48,10 @@
             background-image: url('how_to_buy_button.png');
         }
         #about-verdansk {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
+            background-image: url('about_verdansk_button.png');
+        }
+        #release-info {
+            background-image: url('release_info_button.png');
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -74,6 +71,36 @@
             cursor: pointer;
             font-size: 1.5em;
         }
+        .video-container {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 400px;
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+        .video-close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            color: #000;
+        }
         .disclaimer {
             margin-top: 30px;
             font-size: 0.8em;
@@ -90,46 +117,54 @@
     <div class="container">
         <h1>Warzone Verdansk Coin ($VERD)</h1>
 
-        <div id="timer" class="timer"></div>
+        <div id="main-timer" class="timer"></div>
 
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')">
-            <span>About Verdansk</span>
-        </div>
+        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')"></div>
+        <div id="release-info" class="button" onclick="toggleSection('release-info-info')"></div>
 
-        <!-- WHY BUY SECTION -->
         <div id="why-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('why-buy-info')">&times;</span>
             <h2>Why Buy This Coin?</h2>
             <p>We all miss the legendary Verdansk map from Call of Duty. By purchasing this coin, we can collectively increase its market cap and show how much we want Verdansk back!</p>
-            <p>Watch this <a href="https://www.youtube.com/watch?v=d1z5qYSF1tM" target="_blank">YouTube tutorial</a> to learn more about crypto trading.</p>
         </div>
 
-        <!-- HOW TO BUY SECTION -->
         <div id="how-to-buy-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('how-to-buy-info')">&times;</span>
             <h2>How to Buy the Coin?</h2>
+            <p>The countdown below shows when the coin will be live and ready for purchase:</p>
+            <div id="how-to-buy-timer" class="timer"></div>
             <ol>
                 <li>Install a wallet like <a href="https://phantom.app/" target="_blank">Phantom</a> or MetaMask.</li>
-                <li>Watch <a href="https://www.youtube.com/watch?v=vWajFbj8Nu8&t=92s">this tutorial</a> to learn how to buy Solana (SOL) in Phantom.</li>
+                <li>Watch <a href="https://www.youtube.com/watch?v=d1z5qYSF1tM" target="_blank">this tutorial</a> to learn how to buy Solana (SOL) in Phantom.</li>
                 <li>Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> and search for "Warzone Verdansk Coin" in the search field.</li>
                 <li>Follow the platform's instructions to purchase the coin.</li>
             </ol>
         </div>
 
-        <!-- ABOUT VERDANSK SECTION -->
         <div id="about-verdansk-info" class="info-section">
             <span class="close-btn" onclick="toggleSection('about-verdansk-info')">&times;</span>
             <h2>About Verdansk</h2>
-            <p>Verdansk was an iconic map in Call of Duty: Warzone, known for its diverse terrain, urban areas, and legendary battles. From the chaos of Downtown to the strategic heights of Dam, Verdansk offered players countless opportunities to showcase their skills.</p>
-            <p>Despite being removed from the game, Verdansk remains a fan-favorite map, symbolizing the golden age of Warzone. Players worldwide cherish the memories of intense firefights, clutch victories, and the camaraderie formed in its vast environment.</p>
-            <p>Warzone Verdansk Coin ($VERD) is dedicated to keeping the spirit of Verdansk alive, celebrating its legacy and the passion of its loyal players.</p>
+            <p>Verdansk was an iconic map in Call of Duty: Warzone. Players remember their epic battles and adventures in this environment. With this coin, we keep the memory of Verdansk alive!</p>
+        </div>
+
+        <div id="release-info-info" class="info-section">
+            <span class="close-btn" onclick="toggleSection('release-info-info')">&times;</span>
+            <h2>Release Information</h2>
+            <p>The countdown timer below shows when the coin will be available for purchase. After the timer ends, the link to the coin on Dexscreener will appear here:</p>
+            <div id="release-timer" class="timer"></div>
+            <p id="release-link" style="display: none; color: lightgreen;">The coin is now live! Visit <a href="https://dexscreener.com" target="_blank">Dexscreener</a> to buy the coin!</p>
         </div>
 
         <div class="disclaimer">
             <p>Trading cryptocurrencies comes with no guarantee of success. Invest only what you are willing to lose.</p>
         </div>
+    </div>
+
+    <div class="video-container" id="video-container">
+        <button class="video-close" onclick="closeVideo()">&times;</button>
+        <iframe src="https://www.youtube.com/embed/YsWeym0MdeE" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <script>
@@ -141,6 +176,51 @@
                 section.style.display = 'none';
             }
         }
+
+        function closeVideo() {
+            var videoContainer = document.getElementById('video-container');
+            videoContainer.style.display = 'none';
+        }
+
+        function calculateTimeUntilRelease(releaseDate) {
+            const now = new Date();
+            const timeDiff = releaseDate - now;
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            return { hours, minutes, seconds, timeDiff };
+        }
+
+        function startCountdown() {
+            const releaseDate = new Date('2025-01-05T13:00:00'); // 1PM CET
+
+            function updateTimer(timerId, linkId) {
+                const { hours, minutes, seconds, timeDiff } = calculateTimeUntilRelease(releaseDate);
+                const timerDisplay = document.getElementById(timerId);
+                const linkDisplay = document.getElementById(linkId);
+
+                if (timeDiff <= 0) {
+                    timerDisplay.textContent = "The coin is now live!";
+                    if (linkDisplay) linkDisplay.style.display = 'block';
+                    return;
+                }
+
+                timerDisplay.textContent = `Time until release: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            updateTimer('main-timer', null);
+            updateTimer('how-to-buy-timer', null);
+            updateTimer('release-timer', 'release-link');
+
+            setInterval(() => {
+                updateTimer('main-timer', null);
+                updateTimer('how-to-buy-timer', null);
+                updateTimer('release-timer', 'release-link');
+            }, 1000);
+        }
+
+        window.onload = startCountdown;
     </script>
 </body>
 </html>
