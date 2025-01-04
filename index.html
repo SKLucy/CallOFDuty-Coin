@@ -82,36 +82,6 @@
             cursor: pointer;
             font-size: 1.5em;
         }
-        .video-container {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 400px;
-            height: 250px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            overflow: hidden;
-            z-index: 1000;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-        }
-        .video-close {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            text-align: center;
-            line-height: 25px;
-            font-weight: bold;
-            color: #000;
-        }
         .disclaimer {
             margin-top: 30px;
             font-size: 0.8em;
@@ -132,7 +102,7 @@
 
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="about-verdansk" class="button">More Info Coming Soon</div>
+        <div id="about-verdansk" class="button" onclick="toggleSection('about-verdansk-info')">Info About Verdansk</div>
         <div id="release-info" class="button">Release Details Pending</div>
 
         <div id="why-buy-info" class="info-section">
@@ -173,11 +143,6 @@
         </div>
     </div>
 
-    <div class="video-container" id="video-container">
-        <button class="video-close" onclick="closeVideo()">&times;</button>
-        <iframe src="https://www.youtube.com/embed/YsWeym0MdeE" frameborder="0" allowfullscreen></iframe>
-    </div>
-
     <script>
         function toggleSection(sectionId) {
             var section = document.getElementById(sectionId);
@@ -186,11 +151,6 @@
             } else {
                 section.style.display = 'none';
             }
-        }
-
-        function closeVideo() {
-            var videoContainer = document.getElementById('video-container');
-            videoContainer.style.display = 'none';
         }
 
         function calculateTimeUntilRelease(releaseDate) {
@@ -235,3 +195,4 @@
     </script>
 </body>
 </html>
+
