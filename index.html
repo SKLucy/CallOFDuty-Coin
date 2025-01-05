@@ -55,6 +55,14 @@
             align-items: center;
             color: white;
             font-size: 1.5em;
+            flex-direction: column;
+        }
+        #release-link {
+            display: none;
+            color: gold;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 10px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -94,8 +102,12 @@
 
         <div id="why-buy" class="button" onclick="toggleSection('why-buy-info')"></div>
         <div id="how-to-buy" class="button" onclick="toggleSection('how-to-buy-info')"></div>
-        <div id="release-info" class="button">Coin Link Here Available In
+        <div id="release-info" class="button">
+            Coin Link Here Available In
             <div id="release-timer" class="timer"></div>
+            <a id="release-link" href="https://dexscreener.com/solana/e5tiuw493pceu2esfptjj9tod2dr7bqkqdv1einymoon" target="_blank">
+                Buy Warzone Verdansk Coin Now
+            </a>
         </div>
 
         <div id="why-buy-info" class="info-section">
@@ -148,11 +160,11 @@
             function updateTimer(timerId, linkId) {
                 const { hours, minutes, seconds, timeDiff } = calculateTimeUntilRelease(releaseDate);
                 const timerDisplay = document.getElementById(timerId);
-                const linkDisplay = document.getElementById(linkId);
+                const linkDisplay = linkId ? document.getElementById(linkId) : null;
 
                 if (timeDiff <= 0) {
                     timerDisplay.textContent = "The coin is now live!";
-                    if (linkDisplay) linkDisplay.style.display = 'block';
+                    if (linkDisplay) linkDisplay.style.display = 'block'; // Link sichtbar machen
                     return;
                 }
 
